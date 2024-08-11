@@ -12,11 +12,13 @@ import com.itmuch.contentcenter.domain.entity.messaging.RocketmqTransactionLog;
 import com.itmuch.contentcenter.domain.enums.AuditStatusEnum;
 import com.itmuch.contentcenter.feignclient.UserCenterFeignClient;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.apache.rocketmq.spring.support.RocketMQHeaders;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.support.MessageBuilder;
@@ -32,6 +34,7 @@ import java.util.UUID;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class ShareService {
     private final ShareMapper shareMapper;
+    @Qualifier("com.itmuch.contentcenter.feignclient.UserCenterFeignClient")
     private final UserCenterFeignClient userCenterFeignClient;
     private final RocketMQTemplate rocketMQTemplate;
     private final RocketmqTransactionLogMapper rocketmqTransactionLogMapper;
@@ -60,7 +63,7 @@ public class ShareService {
         RestTemplate restTemplate = new RestTemplate();
         // 用HTTP GET方法去请求，并且返回一个对象
         ResponseEntity<String> forEntity = restTemplate.getForEntity(
-            "http://localhost:8080/users/{id}",
+            "http://localhost:8081/users/{id}",
             String.class, 2
         );
 

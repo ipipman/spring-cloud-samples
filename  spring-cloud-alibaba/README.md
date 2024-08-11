@@ -1,8 +1,6 @@
+# SpringCloud和SpringCloudAlibaba的关系
 
 
-
-
-## SpringCloud和SpringCloudAlibaba的关系
 
 Spring Cloud Alibaba 是一套基于 Spring Cloud 的微服务开发工具包，它提供了一组用于开发分布式应用微服务的必需组件。Spring Cloud Alibaba 旨在帮助开发者通过 Spring Cloud 的编程模型轻松使用阿里中间件来搭建分布式应用系统。
 
@@ -16,13 +14,17 @@ Spring Cloud Alibaba 的优势在于它结合了 Spring Cloud 的灵活性和阿
 
 
 
-![image-20240811164908563](/Users/zhanghaili/Library/Application Support/typora-user-images/image-20240811164908563.png)
+<img src="/Users/zhanghaili/Library/Application Support/typora-user-images/image-20240811164908563.png" alt="image-20240811164908563" style="zoom:67%;" />
 
 
 
-## 组件介绍
+# 组件介绍
+
+
 
 Spring Cloud Alibaba 是一套基于 Spring Cloud 的微服务开发工具包，它提供了一组用于开发分布式应用微服务的必需组件。以下是 Spring Cloud Alibaba 的主要组件：
+
+<img src="https://ipman-1304583208.cos.ap-nanjing.myqcloud.com/rpcman/2024-08-11-120631.png" alt="image-20240811200629526" style="zoom:70%;" />
 
 - **Nacos**：
   - **服务注册与发现**：作为服务注册中心，支持服务的注册与发现。
@@ -43,7 +45,9 @@ Spring Cloud Alibaba 是一套基于 Spring Cloud 的微服务开发工具包，
 
 
 
-## 版本兼容和管理
+# 版本兼容和管理
+
+
 
 Spring Cloud Alibaba 和 Spring Cloud 的版本管理和兼容性是一个重要的考虑因素，因为它们之间的版本兼容性直接影响到项目的稳定性和可维护性。下面是一些关于 Spring Cloud Alibaba 和 Spring Cloud 版本兼容性的关键点：
 
@@ -102,6 +106,113 @@ Spring Cloud Alibaba 和 Spring Cloud 的版本管理和兼容性是一个重要
 ```
 
 版本兼容性和管理对于使用 Spring Cloud Alibaba 和 Spring Cloud 的项目至关重要。通过遵循最佳实践和使用 BOM 文件，可以有效地管理版本，确保项目的顺利运行。
+
+
+
+## Nacos 注册中心
+
+Nacos 是一个开源的分布式服务发现与配置管理平台，由阿里巴巴集团开发并开源。Nacos 设计的初衷是为了支持云原生应用，便于构建微服务架构。它集成了服务发现、配置管理和动态配置更新的能力，简化了构建分布式系统的服务管理和配置管理过程。
+
+<img src="https://ipman-1304583208.cos.ap-nanjing.myqcloud.com/rpcman/2024-08-11-120715.png" alt="image-20240811200711860" style="zoom: 50%;" />
+
+### Nacos 注册中心的核心功能包括：
+
+1. **服务发现与注册**：
+   - 允许服务提供者注册自己的服务实例到 Nacos 服务器。
+   - 服务消费者可以从 Nacos 获取服务实例列表。
+   - 提供基于 DNS 和基于 RPC 的服务发现机制。
+
+2. **配置管理**：
+   - 动态配置服务允许应用程序在运行时获取和更新配置。
+   - 支持灰度发布和回滚配置变更。
+   - 支持多环境、多应用的配置隔离。
+
+3. **动态 DNS 服务**：
+   - 可以作为 DNS 服务器，提供基于域名的服务发现。
+   - 支持服务的健康检查，能够实时更新服务的可用状态。
+
+4. **服务管理**：
+   - 提供服务的元数据管理。
+   - 支持服务的流量管理，如权重路由、熔断等。
+
+5. **安全性**：
+   - 支持认证和授权机制，保护服务和配置的安全。
+
+6. **监控和审计**：
+   - 记录服务调用的日志和指标。
+   - 支持对配置变更的审计追踪。
+
+### Nacos 注册中心的优势：
+
+- **易用性**：Nacos 提供了丰富的客户端 SDK 和 RESTful API，使得集成变得简单。
+- **高可用性**：支持集群部署，具备良好的容灾能力和数据一致性保证。
+- **扩展性**：可以根据需要轻松扩展 Nacos 集群的规模。
+- **社区活跃**：作为一个开源项目，Nacos 拥有一个活跃的社区，提供了大量的文档和支持。
+
+### 使用场景：
+
+- 微服务架构中的服务发现和配置管理。
+- 多环境下的配置同步和管理。
+- 动态服务发现和负载均衡。
+- 分布式系统的流量管理和故障恢复。
+
+### 如何开始使用 Nacos 注册中心：
+
+1. **下载安装**：可以从 Nacos 的 GitHub 仓库或者官方网站下载二进制文件或 Docker 镜像。
+   1. 下载地址: https://nacos.io/download/nacos-server/
+2. **启动服务**：按照官方文档启动 Nacos 服务。
+   1. sh bin/startup.sh -m standalone
+   2. 访问地址: http://127.0.0.1:8848/nacos/
+3. **集成应用**：使用提供的 SDK 或 API 将 Nacos 集成到您的应用中。
+
+- 添加pom依赖
+
+```java
+  <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+  </dependency>
+```
+
+- 添加yaml配置
+
+```java
+spring:
+  cloud:
+    nacos:
+      discovery:
+        # 指定nacos server的地址
+        server-addr: localhost:8848
+  application:
+    # 服务名称尽量用-，不要用_，不要用特殊字符
+    name: user-center
+```
+
+- 测试服务发现, 通过discoveryClient访问nacos注册中心获取服务信息
+
+```java
+  // 引入
+  @Autowired
+  private DiscoveryClient discoveryClient;
+
+	/**
+   * 测试：服务发现，证明内容中心总能找到用户中心
+   *
+   * @return 用户中心所有实例的地址信息
+   */
+  @GetMapping("test2")
+  public List<ServiceInstance> getInstances() {
+      // 查询指定服务的所有实例的信息
+      // consul/eureka/zookeeper...
+      return this.discoveryClient.getInstances("user-center");
+  }
+```
+
+![image-20240811204424645](/Users/zhanghaili/Library/Application Support/typora-user-images/image-20240811204424645.png)
+
+
+
+
 
 
 
