@@ -220,7 +220,7 @@ spring:
   }
 ```
 
-<img src="/Users/zhanghaili/Library/Application Support/typora-user-images/image-20240811204424645.png" alt="image-20240811204424645" style="width:600px;" />
+<img src="https://ipman-1304583208.cos.ap-nanjing.myqcloud.com/rpcman/2024-08-11-131521.png" alt="image-20240811204424645" style="width:600px;" />
 
 
 
