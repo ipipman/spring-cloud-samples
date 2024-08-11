@@ -18,6 +18,7 @@ spring:
         # NJ
         # 指定集群名称
         cluster-name: BJ
+        # 元数据管理
         metadata:
           instance: c
           haha: hehe

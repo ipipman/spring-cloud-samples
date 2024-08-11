@@ -151,8 +151,6 @@ Nacos 是一个开源的分布式服务发现与配置管理平台，由阿里�
 
 ### 使用场景：
 
-<img src="https://ipman-1304583208.cos.ap-nanjing.myqcloud.com/rpcman/2024-08-11-130101.png" alt="image-20240811210053785" style="zoom: 33%;" />
-
 - 微服务架构中的服务发现和配置管理。
 - 多环境下的配置同步和管理。
 - 动态服务发现和负载均衡。
@@ -176,18 +174,30 @@ Nacos 是一个开源的分布式服务发现与配置管理平台，由阿里�
   </dependency>
 ```
 
-- 添加yaml配置
+- 添加yaml配置, 在nacos中 applicaiton.name 是应用服务的名称. cloud.nacos 是具体的配置, 包含 server地址和元数据管理
+
+  <img src="https://ipman-1304583208.cos.ap-nanjing.myqcloud.com/rpcman/2024-08-11-130101.png" alt="image-20240811210053785" style="zoom: 33%;" />
 
 ```java
 spring:
-  cloud:
+  application:
+    # 服务名称尽量用-，不要用_，不要用特殊字符
+    name: user-center
+	cloud:
     nacos:
       discovery:
         # 指定nacos server的地址
         server-addr: localhost:8848
-  application:
-    # 服务名称尽量用-，不要用_，不要用特殊字符
-    name: user-center
+        # 指定namespace
+        # namespace: 56116141-d837-4d15-8842-94e153bb6cfb
+        # NJ
+        # 指定集群名称
+        cluster-name: BJ
+        # 元数据管理
+        metadata:
+          instance: c
+          haha: hehe
+          version: v1
 ```
 
 - 测试服务发现, 通过discoveryClient访问nacos注册中心获取服务信息
