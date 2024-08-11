@@ -21,7 +21,7 @@ Spring Cloud 利用了 Spring Boot 的特性，使得开发人员可以快速地
 
 
 
-<img src="https://ipman-1304583208.cos.ap-nanjing.myqcloud.com/rpcman/2024-08-11-084337.png" alt="image-20240811164335527" style="zoom: 50%;" />
+<img src="https://ipman-1304583208.cos.ap-nanjing.myqcloud.com/rpcman/2024-08-11-084337.png" alt="image-20240811164335527" style="width:600px;" />
 
 
 

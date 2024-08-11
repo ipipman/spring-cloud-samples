@@ -14,7 +14,7 @@ Spring Cloud Alibaba 的优势在于它结合了 Spring Cloud 的灵活性和阿
 
 
 
-<img src="/Users/zhanghaili/Library/Application Support/typora-user-images/image-20240811164908563.png" alt="image-20240811164908563" style="zoom:67%;" />
+<img src="/Users/zhanghaili/Library/Application Support/typora-user-images/image-20240811164908563.png" alt="image-20240811164908563" style="width:600px;" />
 
 
 
@@ -24,7 +24,7 @@ Spring Cloud Alibaba 的优势在于它结合了 Spring Cloud 的灵活性和阿
 
 Spring Cloud Alibaba 是一套基于 Spring Cloud 的微服务开发工具包，它提供了一组用于开发分布式应用微服务的必需组件。以下是 Spring Cloud Alibaba 的主要组件：
 
-<img src="https://ipman-1304583208.cos.ap-nanjing.myqcloud.com/rpcman/2024-08-11-120631.png" alt="image-20240811200629526" style="zoom:70%;" />
+<img src="https://ipman-1304583208.cos.ap-nanjing.myqcloud.com/rpcman/2024-08-11-120631.png" alt="image-20240811200629526" style="width:600px;" />
 
 - **Nacos**：
   - **服务注册与发现**：作为服务注册中心，支持服务的注册与发现。
@@ -113,7 +113,7 @@ Spring Cloud Alibaba 和 Spring Cloud 的版本管理和兼容性是一个重要
 
 Nacos 是一个开源的分布式服务发现与配置管理平台，由阿里巴巴集团开发并开源。Nacos 设计的初衷是为了支持云原生应用，便于构建微服务架构。它集成了服务发现、配置管理和动态配置更新的能力，简化了构建分布式系统的服务管理和配置管理过程。
 
-<img src="https://ipman-1304583208.cos.ap-nanjing.myqcloud.com/rpcman/2024-08-11-120715.png" alt="image-20240811200711860" style="zoom: 50%;" />
+<img src="https://ipman-1304583208.cos.ap-nanjing.myqcloud.com/rpcman/2024-08-11-120715.png" alt="image-20240811200711860" style="width:600px;" />
 
 ### Nacos 注册中心的核心功能包括：
 
@@ -176,7 +176,7 @@ Nacos 是一个开源的分布式服务发现与配置管理平台，由阿里�
 
 - 添加yaml配置, 在nacos中 applicaiton.name 是应用服务的名称. cloud.nacos 是具体的配置, 包含 server地址和元数据管理
 
-  <img src="https://ipman-1304583208.cos.ap-nanjing.myqcloud.com/rpcman/2024-08-11-130101.png" alt="image-20240811210053785" style="zoom: 33%;" />
+  <img src="https://ipman-1304583208.cos.ap-nanjing.myqcloud.com/rpcman/2024-08-11-130101.png" alt="image-20240811210053785" style="width:600px;" />
 
 ```java
 spring:
@@ -220,7 +220,7 @@ spring:
   }
 ```
 
-![image-20240811204424645](/Users/zhanghaili/Library/Application Support/typora-user-images/image-20240811204424645.png)
+<img src="/Users/zhanghaili/Library/Application Support/typora-user-images/image-20240811204424645.png" alt="image-20240811204424645" style="width:600px;" />
 
 
 
