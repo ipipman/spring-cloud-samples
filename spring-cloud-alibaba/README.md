@@ -2,7 +2,7 @@
 
 
 
-## SpringCloud和SpringCloudAlibaba的关系
+# SpringCloud和SpringCloudAlibaba的关系
 
 Spring Cloud Alibaba 是一套基于 Spring Cloud 的微服务开发工具包，它提供了一组用于开发分布式应用微服务的必需组件。Spring Cloud Alibaba 旨在帮助开发者通过 Spring Cloud 的编程模型轻松使用阿里中间件来搭建分布式应用系统。
 
@@ -20,7 +20,7 @@ Spring Cloud Alibaba 的优势在于它结合了 Spring Cloud 的灵活性和阿
 
 
 
-## 组件介绍
+# 组件介绍
 
 Spring Cloud Alibaba 是一套基于 Spring Cloud 的微服务开发工具包，它提供了一组用于开发分布式应用微服务的必需组件。以下是 Spring Cloud Alibaba 的主要组件：
 
