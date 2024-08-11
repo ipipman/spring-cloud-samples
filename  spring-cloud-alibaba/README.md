@@ -14,7 +14,7 @@ Spring Cloud Alibaba 的优势在于它结合了 Spring Cloud 的灵活性和阿
 
 
 
-<img src="/Users/zhanghaili/Library/Application Support/typora-user-images/image-20240811164908563.png" alt="image-20240811164908563" style="width:600px;" />
+<img src="https://ipman-1304583208.cos.ap-nanjing.myqcloud.com/rpcman/2024-08-11-131442.png" alt="image-20240811164908563" style="width:600px;" />
 
 
 
