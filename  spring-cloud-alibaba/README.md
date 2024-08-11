@@ -39,7 +39,7 @@ Spring Cloud Alibaba 是一套基于 Spring Cloud 的微服务开发工具包，
 
 这些组件共同构成了 Spring Cloud Alibaba 的核心功能，使得开发者能够利用这些工具快速搭建和管理微服务架构。每个组件都有其特定的功能，可以单独使用也可以组合使用，以满足不同场景的需求。
 
-<img src="https://ipman-1304583208.cos.ap-nanjing.myqcloud.com/rpcman/2024-08-11-085640.png" alt="image-20240811165636694" style="zoom:50%;" />
+<img src="https://ipman-1304583208.cos.ap-nanjing.myqcloud.com/rpcman/2024-08-11-085640.png" alt="image-20240811165636694" style="width:600px;" />
 
 
 
