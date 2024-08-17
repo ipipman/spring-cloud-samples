@@ -42,16 +42,17 @@ public class SpringcloudConsumerApplication {
                 test();
             }
 
-//
-//            context.getBeansWithAnnotation(FeignClient.class).forEach((k, v) -> {
-//                System.out.println(" FeignClient ==> " + k + " : " + v);
-//            });
-//            System.out.println(Arrays.toString(context.getBeanNamesForType(HelloApiServiceClient.class)));
-//            System.out.println(Arrays.toString(context.getBeanNamesForType(UserApiServiceClient.class)));
-//            Arrays.stream(context.getBeanDefinitionNames())
-//                    .filter(x -> x.contains("hello")||x.contains("user")).forEach(System.out::println);
-//            System.out.println(context.getBean("user.FeignClientSpecification"));
-//            System.out.println(context.getBean("userFeignClient"));
+            // @FeignClient(value = "helloService", contextId = "hello") ,
+            // 添加:contextId , 避免FeignClientSpecification冲突
+            context.getBeansWithAnnotation(FeignClient.class).forEach((k, v) -> {
+                System.out.println(" FeignClient ==> " + k + " : " + v);
+            });
+            System.out.println(Arrays.toString(context.getBeanNamesForType(HelloApiServiceClient.class)));
+            System.out.println(Arrays.toString(context.getBeanNamesForType(UserApiServiceClient.class)));
+            Arrays.stream(context.getBeanDefinitionNames())
+                    .filter(x -> x.contains("hello")||x.contains("user")).forEach(System.out::println);
+            System.out.println(context.getBean("user.FeignClientSpecification"));
+            System.out.println(context.getBean("userFeignClient"));
 
         };
     }
