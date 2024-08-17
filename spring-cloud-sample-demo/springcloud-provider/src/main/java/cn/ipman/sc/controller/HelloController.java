@@ -2,6 +2,8 @@ package cn.ipman.sc.controller;
 
 import cn.ipman.sc.api.service.HelloApiService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -24,6 +26,12 @@ public class HelloController implements HelloApiService {
 
     public String c(String name) {
         return "hello c," + name + " from " + port;
+    }
+
+
+    @RequestMapping("/api/hello/d")
+    public String d(@RequestParam("name") String name){
+        return "hello d," + name + " from " + port;
     }
 
 }

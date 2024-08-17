@@ -9,6 +9,9 @@ import org.springframework.cloud.client.serviceregistry.Registration;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
+/**
+ * service register aspect.
+ */
 @Aspect
 @Component
 public class ServiceRegisterAspect {

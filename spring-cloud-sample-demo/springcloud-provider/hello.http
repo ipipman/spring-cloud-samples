@@ -2,15 +2,18 @@
 GET http://localhost:9000/api/hello/hi
 
 ### GET hello/a
-GET http://localhost:9000/api/hello/a?name=kk
+GET http://localhost:9000/api/hello/a?name=ipman
 
 ### GET hello/c
-GET http://localhost:9000/api/hello/c?name=kk
+GET http://localhost:9000/api/hello/c?name=ipman
 
 ### GET user/list
-GET http://localhost:9000/api/user/list?name=kk
+GET http://localhost:9000/api/user/list?name=ipman
 
 ### GET user/find
 GET http://localhost:9000/api/user/find?id=100
 
 
+
+### GET hello/d
+GET http://localhost:9000/api/hello/d?name=ipman

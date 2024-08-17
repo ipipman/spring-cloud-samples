@@ -22,6 +22,15 @@ public class PrewarmupApplication {
             System.out.println("===>> 预热:");
             String ret = HttpUtils.get("http://localhost:8081/hello");
             System.out.println(ret);
+
+            for (int i = 0; i < 1000; i++) {
+                try {
+                    HttpUtils.get("https://profile-counter.glitch.me/ipipman/count.svg");
+                }catch (Exception e){
+
+                }
+
+            }
         };
     }
 }
