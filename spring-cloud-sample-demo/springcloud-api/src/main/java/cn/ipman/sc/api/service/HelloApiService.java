@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 public interface HelloApiService {
 
-
     @GetMapping("/api/hello/hi")
     String hi();
 

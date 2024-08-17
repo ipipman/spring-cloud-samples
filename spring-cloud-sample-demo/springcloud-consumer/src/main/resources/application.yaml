@@ -1,12 +1,13 @@
 spring:
   application:
-    name: springcloud-consumer
+    name: helloService-consumer
 
   cloud:
     nacos:
         discovery:
           server-addr: 127.0.0.1:8848
-          username: nacos
-          password: nacos
+#          username: nacos
+#          password: nacos
+
 server:
   port: 9100

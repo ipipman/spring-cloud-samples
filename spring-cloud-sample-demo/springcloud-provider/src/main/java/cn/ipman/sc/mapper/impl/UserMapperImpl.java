@@ -16,6 +16,6 @@ public class UserMapperImpl implements UserMapper {
     }
 
     public User findById(long id) {
-        return new User(id, "KK" + id, 20);
+        return new User(id, "ipman" + id, 20);
     }
 }
