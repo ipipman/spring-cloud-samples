@@ -18,6 +18,10 @@ Spring Cloud Alibaba 的优势在于它结合了 Spring Cloud 的灵活性和阿
 
 
 
+
+
+
+
 # 组件介绍
 
 
@@ -40,6 +44,10 @@ Spring Cloud Alibaba 是一套基于 Spring Cloud 的微服务开发工具包，
 这些组件共同构成了 Spring Cloud Alibaba 的核心功能，使得开发者能够利用这些工具快速搭建和管理微服务架构。每个组件都有其特定的功能，可以单独使用也可以组合使用，以满足不同场景的需求。
 
 <img src="https://ipman-1304583208.cos.ap-nanjing.myqcloud.com/rpcman/2024-08-11-085640.png" alt="image-20240811165636694" style="width:600px;" />
+
+
+
+
 
 
 
@@ -109,11 +117,21 @@ Spring Cloud Alibaba 和 Spring Cloud 的版本管理和兼容性是一个重要
 
 
 
+
+
+
+
+
+
 ## Nacos 注册中心
 
 Nacos 是一个开源的分布式服务发现与配置管理平台，由阿里巴巴集团开发并开源。Nacos 设计的初衷是为了支持云原生应用，便于构建微服务架构。它集成了服务发现、配置管理和动态配置更新的能力，简化了构建分布式系统的服务管理和配置管理过程。
 
 <img src="https://ipman-1304583208.cos.ap-nanjing.myqcloud.com/rpcman/2024-08-11-120715.png" alt="image-20240811200711860" style="width:600px;" />
+
+
+
+
 
 ### Nacos 注册中心的核心功能包括：
 
@@ -221,6 +239,10 @@ spring:
 ```
 
 <img src="https://ipman-1304583208.cos.ap-nanjing.myqcloud.com/rpcman/2024-08-11-131521.png" alt="image-20240811204424645" style="width:600px;" />
+
+
+
+
 
 
 
