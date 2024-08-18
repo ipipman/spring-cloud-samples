@@ -21,12 +21,17 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/users")
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+//@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @Slf4j
 public class UserController {
-    private final UserService userService;
-    private final WxMaService wxMaService;
-    private final JwtOperator jwtOperator;
+    @Autowired
+    private  UserService userService;
+
+    @Autowired
+    private  WxMaService wxMaService;
+
+    @Autowired
+    private  JwtOperator jwtOperator;
 
     @GetMapping("/{id}")
     @CheckLogin

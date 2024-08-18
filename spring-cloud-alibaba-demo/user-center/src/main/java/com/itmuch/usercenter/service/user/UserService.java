@@ -16,10 +16,15 @@ import java.util.Date;
 
 @Slf4j
 @Service
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+//@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class UserService {
-    private final UserMapper userMapper;
-    private final BonusEventLogMapper bonusEventLogMapper;
+
+    @Autowired
+    private UserMapper userMapper;
+    //    private final UserMapper userMapper;
+    @Autowired
+    private BonusEventLogMapper bonusEventLogMapper;
+//    private final BonusEventLogMapper bonusEventLogMapper;
 
     public User findById(Integer id) {
         // select * from user where id = #{id}
@@ -38,35 +43,35 @@ public class UserService {
 
         // 2. 记录日志到bonus_event_log表里面
         this.bonusEventLogMapper.insert(
-            BonusEventLog.builder()
-                .userId(userId)
-                .value(bonus)
-                .event(msgDTO.getEvent())
-                .createTime(new Date())
-                .description(msgDTO.getDescription())
-                .build()
+                BonusEventLog.builder()
+                        .userId(userId)
+                        .value(bonus)
+                        .event(msgDTO.getEvent())
+                        .createTime(new Date())
+                        .description(msgDTO.getDescription())
+                        .build()
         );
         log.info("积分添加完毕...");
     }
 
-    public User login(UserLoginDTO loginDTO, String openId){
+    public User login(UserLoginDTO loginDTO, String openId) {
         User user = this.userMapper.selectOne(
-            User.builder()
-                .wxId(openId)
-                .build()
+                User.builder()
+                        .wxId(openId)
+                        .build()
         );
         if (user == null) {
             User userToSave = User.builder()
-                .wxId(openId)
-                .bonus(300)
-                .wxNickname(loginDTO.getWxNickname())
-                .avatarUrl(loginDTO.getAvatarUrl())
-                .roles("user")
-                .createTime(new Date())
-                .updateTime(new Date())
-                .build();
+                    .wxId(openId)
+                    .bonus(300)
+                    .wxNickname(loginDTO.getWxNickname())
+                    .avatarUrl(loginDTO.getAvatarUrl())
+                    .roles("user")
+                    .createTime(new Date())
+                    .updateTime(new Date())
+                    .build();
             this.userMapper.insertSelective(
-                userToSave
+                    userToSave
             );
             return userToSave;
         }

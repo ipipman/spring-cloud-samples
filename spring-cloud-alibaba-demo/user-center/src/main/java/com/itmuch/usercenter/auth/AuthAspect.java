@@ -19,9 +19,13 @@ import java.util.Objects;
 
 @Aspect
 @Component
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+//@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class AuthAspect {
-    private final JwtOperator jwtOperator;
+
+
+    //private final JwtOperator jwtOperator;
+    @Autowired
+    private JwtOperator jwtOperator;
 
     @Around("@annotation(com.itmuch.usercenter.auth.CheckLogin)")
     public Object checkLogin(ProceedingJoinPoint point) throws Throwable {

@@ -13,9 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/users")
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+//@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class BonusController {
-    private final UserService userService;
+
+    @Autowired
+    private  UserService userService;
+    //private final UserService userService;
 
     @PutMapping("/add-bonus")
     public User addBonus(@RequestBody UserAddBonseDTO userAddBonseDTO) {

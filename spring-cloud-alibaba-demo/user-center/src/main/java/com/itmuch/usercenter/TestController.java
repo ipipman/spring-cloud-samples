@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Date;
 
 @RestController
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+//@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class TestController {
     /**
      * // 作业1：课后研究一下@Resource和@Autowired的区别
      * // 面试题
      */
-    private final UserMapper userMapper;
+    @Autowired
+    private  UserMapper userMapper;
 
     @GetMapping("/test")
     public User testInsert() {

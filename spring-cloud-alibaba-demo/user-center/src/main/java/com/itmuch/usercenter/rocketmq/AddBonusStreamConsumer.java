@@ -14,10 +14,12 @@ import org.springframework.cloud.stream.messaging.Sink;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+//@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @Slf4j
 public class AddBonusStreamConsumer {
-    private final UserService userService;
+
+    @Autowired
+    private  UserService userService;
 
     @StreamListener(Sink.INPUT)
     public void receive(UserAddBonusMsgDTO message) {

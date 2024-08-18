@@ -3,17 +3,23 @@ package cn.ipman.sc.consumer;
 import cn.ipman.sc.api.model.User;
 import cn.ipman.sc.contract.HelloApiServiceClient;
 import cn.ipman.sc.contract.UserApiServiceClient;
+import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
+import java.util.List;
 
 @SpringBootApplication
 @EnableDiscoveryClient
@@ -33,6 +39,11 @@ public class SpringcloudConsumerApplication {
     @Autowired
     ApplicationContext context;
 
+
+    @Autowired
+    DiscoveryClient discoveryClient;
+
+
     @Bean
     ApplicationRunner runner() {
         return args -> {
@@ -42,6 +53,7 @@ public class SpringcloudConsumerApplication {
                 test();
             }
 
+
             // @FeignClient(value = "helloService", contextId = "hello") ,
             // 添加:contextId , 避免FeignClientSpecification冲突
             context.getBeansWithAnnotation(FeignClient.class).forEach((k, v) -> {
@@ -50,9 +62,20 @@ public class SpringcloudConsumerApplication {
             System.out.println(Arrays.toString(context.getBeanNamesForType(HelloApiServiceClient.class)));
             System.out.println(Arrays.toString(context.getBeanNamesForType(UserApiServiceClient.class)));
             Arrays.stream(context.getBeanDefinitionNames())
-                    .filter(x -> x.contains("hello")||x.contains("user")).forEach(System.out::println);
+                    .filter(x -> x.contains("hello") || x.contains("user")).forEach(System.out::println);
             System.out.println(context.getBean("user.FeignClientSpecification"));
             System.out.println(context.getBean("userFeignClient"));
+
+
+            // test get nacos instances and call rest template...
+            List<ServiceInstance> serviceInstanceList = discoveryClient.getInstances("helloService");
+            System.out.println("===>  get instances: " + JSON.toJSONString(serviceInstanceList));
+            for (ServiceInstance serviceInstance : serviceInstanceList) {
+                String url = serviceInstance.getUri() + "/api/user/list?name=ipman";
+                RestTemplate restTemplate = new RestTemplate();
+                ResponseEntity<String> result = restTemplate.getForEntity(url, String.class, 1);
+                System.out.println("===> call instance: " + JSON.toJSONString(result));
+            }
 
         };
     }
