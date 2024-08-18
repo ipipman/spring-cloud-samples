@@ -1,4 +1,4 @@
-# SpringCloud和SpringCloudAlibaba的关系
+# SpringCloud和SpringCloud-Alibaba的关系
 
 
 
@@ -227,4 +227,19 @@ spring:
 
 
 
+
+### Ribbon 配合 Nacos 的简述
+
+Ribbon 是一个客户端负载均衡库，它允许你在多个实例之间进行负载均衡调用。而 Nacos 是一个易于构建服务发现和配置管理平台的中间件，它可以作为服务注册中心来使用。
+当你在 Spring Cloud 应用中集成 Nacos 时，通常会使用 spring-cloud-starter-alibaba-nacos-discovery 依赖，这个依赖已经包含了 Ribbon 的支持。这意味着你不需要单独添加 Ribbon 的依赖，因为 Nacos 的服务发现客户端已经默认集成了 Ribbon
+
+```java
+<!-- Maven 示例 -->
+<dependency>
+    <groupId>com.alibaba.cloud</groupId>
+    <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+    <version>${spring-cloud-alibaba.version}</version>
+</dependency>
+
+```
 
