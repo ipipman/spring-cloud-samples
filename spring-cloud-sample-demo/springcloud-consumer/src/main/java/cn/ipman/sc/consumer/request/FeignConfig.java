@@ -1,5 +1,7 @@
 package cn.ipman.sc.consumer.request;
 
+import cn.ipman.sc.consumer.ribbon.HelloApiCustomRule;
+import com.netflix.loadbalancer.IRule;
 import feign.RequestInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,4 +19,5 @@ public class FeignConfig {
     public RequestInterceptor requestInterceptor() {
         return new IMRequestInterceptor();
     }
+
 }

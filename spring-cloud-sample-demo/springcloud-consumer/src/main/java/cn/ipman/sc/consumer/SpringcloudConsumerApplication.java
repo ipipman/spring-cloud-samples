@@ -22,9 +22,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients("cn.ipman.sc")
+@EnableFeignClients(basePackages = "cn.ipman.sc.consumer")
 public class SpringcloudConsumerApplication {
 
     public static void main(String[] args) {
@@ -61,10 +62,10 @@ public class SpringcloudConsumerApplication {
 
             // 扫描被标记 @OpenFeignClient 的Bean
             scanServiceClientBean();
-            
+
             // 打印从 Nacos 获取Provider的实例,以及元数据
             printFromNacosProviderInstances();
-            
+
             // 测试手动通过 Nacos 获取的Provider的实例, 通过restTemplate, 手动调用
             testRestTemplateToNacosProviderInstance();
 

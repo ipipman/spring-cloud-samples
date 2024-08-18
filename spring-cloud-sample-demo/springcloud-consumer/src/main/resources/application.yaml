@@ -4,17 +4,24 @@ spring:
 
   cloud:
     nacos:
-        discovery:
-          server-addr: 127.0.0.1:8848
+      discovery:
+        server-addr: 127.0.0.1:8848
 #          username: nacos
 #          password: nacos
 
 
+    loadbalancer:
+      ribbon:
+        enabled: true
+#ribbon:
+#  eager-load:
+#    enabled: true
+#    clients: helloService
 
 server:
   port: 9100
 
-# 服务名称
+## 服务名称
 #helloService:
 #  ribbon:
-#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+#    NFLoadBalancerRuleClassName: cn.ipman.sc.consumer.ribbon.HelloApiCustomRule

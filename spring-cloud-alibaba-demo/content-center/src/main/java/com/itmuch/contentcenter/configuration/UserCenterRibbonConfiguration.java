@@ -8,4 +8,5 @@ import ribbonconfiguration.RibbonConfiguration;
 @Configuration
 @RibbonClients(defaultConfiguration = RibbonConfiguration.class)
 public class UserCenterRibbonConfiguration {
+
 }
