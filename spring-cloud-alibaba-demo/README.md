@@ -10,17 +10,13 @@ Spring Cloud Alibaba 包括的功能有：
 - **服务注册与发现**：适配 Spring Cloud 的服务注册与发现标准，默认集成了 Ribbon 的支持。
 - **配置管理**：支持通过 Nacos 进行外部配置管理，可以在 Nacos 控制台创建配置并进行管理。
 
+<br>
+
 Spring Cloud Alibaba 的优势在于它结合了 Spring Cloud 的灵活性和阿里巴巴中间件的强大功能，使得开发者能够在 Java 生态系统中快速构建高性能、可扩展的微服务架构。
-
-
 
 <img src="https://ipman-1304583208.cos.ap-nanjing.myqcloud.com/rpcman/2024-08-11-131442.png" alt="image-20240811164908563" style="width:600px;" />
 
-
-
-<br><br><br>
-
-
+<br><br>
 
 # 组件介绍
 
@@ -47,13 +43,7 @@ Spring Cloud Alibaba 是一套基于 Spring Cloud 的微服务开发工具包，
 
 <img src="https://ipman-1304583208.cos.ap-nanjing.myqcloud.com/rpcman/2024-08-11-085640.png" alt="image-20240811165636694" style="width:600px;" />
 
-
-
-<br><br><br>
-
-
-
-
+<br><br>
 
 # 版本兼容和管理
 
@@ -121,23 +111,13 @@ Spring Cloud Alibaba 和 Spring Cloud 的版本管理和兼容性是一个重要
 
 版本兼容性和管理对于使用 Spring Cloud Alibaba 和 Spring Cloud 的项目至关重要。通过遵循最佳实践和使用 BOM 文件，可以有效地管理版本，确保项目的顺利运行。
 
-
-
-
-
-<br><br><br>
-
-
+<br><br>
 
 ## Nacos 注册中心
 
 Nacos 是一个开源的分布式服务发现与配置管理平台，由阿里巴巴集团开发并开源。Nacos 设计的初衷是为了支持云原生应用，便于构建微服务架构。它集成了服务发现、配置管理和动态配置更新的能力，简化了构建分布式系统的服务管理和配置管理过程。
 
 <img src="https://ipman-1304583208.cos.ap-nanjing.myqcloud.com/rpcman/2024-08-11-120715.png" alt="image-20240811200711860" style="width:600px;" />
-
-
-
-
 
 <br>
 
@@ -303,4 +283,98 @@ for (int i = 0; i < 10; i++) {
 ```
 
 
+
+
+
+## Ribbon 的组成部分
+
+Ribbon 是一个客户端负载均衡库，最初由 Netflix 开发，后来被广泛应用于 Spring Cloud 中。Ribbon 提供了一种方式来实现客户端负载均衡，使得客户端应用程序能够从多个服务实例中选择一个合适的服务实例来调用。
+
+<img src="https://ipman-1304583208.cos.ap-nanjing.myqcloud.com/rpcman/2024-08-18-130659.png" alt="image-20240818210400737" style="width:700px;" />
+
+
+
+
+
+Ribbon 的主要组成部分包括：
+
+1. **ServerList**
+   - **功能**：`ServerList` 负责提供服务实例列表。这些服务实例通常是通过某种服务发现机制获取的，例如 Eureka、Consul 等。
+   - **实现**：Ribbon 提供了多种 `ServerList` 的实现，例如 `StaticServerList`（静态服务列表）、`CacheSafeServerList`（缓存安全服务列表）等。
+
+2. **ServerListFilter**
+   - **功能**：`ServerListFilter` 用于过滤 `ServerList` 中的服务实例。例如，可以根据健康状态或其他条件过滤服务实例。
+   - **实现**：Ribbon 提供了 `AvailabilityFilteringServerList` 等过滤器实现。
+
+3. **IRule**
+   - **功能**：`IRule` 接口定义了选择服务实例的策略。Ribbon 内置了多种负载均衡策略，例如轮询、随机选择、权重选择等。
+   - **实现**：
+     - **RoundRobinRule**：简单轮询负载均衡。
+     - **RandomRule**：随机选择服务实例。
+     - **RetryRule**：重试策略，可以配合其他规则使用。
+     - **WeightedResponseTimeRule**：基于响应时间的加权负载均衡。
+     - **BestAvailableRule**：选择延迟最低的服务实例。
+     - **ZoneAvoidanceRule**：默认规则，结合了 BestAvailableRule 和 AvailabilityFilteringRule。
+
+4. **IPing**
+   - **功能**：`IPing` 接口定义了服务实例是否存活的检测机制。通常用于检测服务实例是否可以接受请求。
+   - **实现**：Ribbon 提供了 `PingUrl` 等实现。
+
+5. **IClientConfig**
+   - **功能**：`IClientConfig` 接口定义了 Ribbon 客户端的配置属性，例如连接超时、读取超时等。
+   - **实现**：可以通过配置文件或编程方式设置这些配置。
+
+6. **ILoadBalancer**
+   - **功能**：`ILoadBalancer` 接口提供了负载均衡的核心功能，它负责根据给定的规则选择服务实例。
+   - **实现**：Ribbon 提供了一个默认的实现 `ZoneAwareLoadBalancer`。
+
+### 工作流程
+
+1. **获取服务列表**：首先通过 `ServerList` 获取所有可用的服务实例列表。
+2. **过滤服务实例**：通过 `ServerListFilter` 过滤掉不符合条件的服务实例。
+3. **选择服务实例**：根据 `IRule` 选择一个服务实例进行调用。
+4. **健康检查**：使用 `IPing` 检查服务实例是否存活。
+5. **执行请求**：向选定的服务实例发送请求。
+
+
+
+## Ribbon 负载均衡规则说明
+
+Ribbon 是一个客户端负载均衡库，用于在微服务架构中选择合适的服务器实例进行调用。Ribbon 提供了多种内置的负载均衡策略，同时也允许用户自定义负载均衡策略。
+
+<img src="https://ipman-1304583208.cos.ap-nanjing.myqcloud.com/rpcman/2024-08-18-132724.png" alt="image-20240818212722507" style="width:700px;" />
+
+<br>
+
+### 内置的负载均衡策略
+
+#### 1. RandomRule (随机)
+- **描述**: 随机选择一个可用的服务实例。
+- **特点**: 简单易用，适用于大多数场景。
+
+#### 2. RoundRobinRule (轮询)
+- **描述**: 按照轮询的方式依次选择服务实例。
+- **特点**: 实现简单，易于理解。
+
+#### 3. WeightedResponseTimeRule (基于响应时间的加权)
+- **描述**: 根据服务实例的平均响应时间来分配权重，响应时间越短的服务实例被选中的概率越大。
+- **特点**: 能够根据服务实例的实际性能动态调整权重。
+
+#### 4. BestAvailableRule (最佳可用)
+- **描述**: 选择具有最低并发请求的服务实例。
+- **特点**: 尽量减少服务实例的压力。
+
+#### 5. RetryRule (重试)
+- **描述**: 包含一个 `RandomRule` 和一个 `BestAvailableRule`，如果选择的服务实例失败，则重试选择另一个服务实例。
+- **特点**: 增强了容错能力。
+
+#### 6. ZoneAvoidanceRule (区域避免)
+- **描述**: 默认的负载均衡策略，结合了 `BestAvailableRule` 和 `RoundRobinRule`，同时考虑了服务实例所在的区域。
+- **特点**: 在多个可用区之间进行负载均衡，提高系统的可用性和稳定性。
+
+### 自定义负载均衡策略
+
+除了内置的负载均衡策略外，Ribbon 还允许用户自定义负载均衡策略。自定义负载均衡策略需要实现 `IRule` 接口，并覆盖 `choose` 方法。
+
+#### 示例：自定义负载均衡策略
 

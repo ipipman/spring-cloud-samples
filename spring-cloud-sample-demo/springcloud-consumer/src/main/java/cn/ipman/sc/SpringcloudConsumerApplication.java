@@ -125,7 +125,8 @@ public class SpringcloudConsumerApplication {
         System.out.println(context.getBean("user.FeignClientSpecification"));
         System.out.println(context.getBean("userFeignClient"));
     }
-    
+
+
 
     private void testOpenFeign() {
         String hello = helloService.hi();
