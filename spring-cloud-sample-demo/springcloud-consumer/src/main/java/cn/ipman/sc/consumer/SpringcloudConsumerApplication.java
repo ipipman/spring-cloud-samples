@@ -20,6 +20,8 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 
 @SpringBootApplication
 @EnableDiscoveryClient
@@ -67,6 +69,7 @@ public class SpringcloudConsumerApplication {
             System.out.println(context.getBean("userFeignClient"));
 
 
+            // 测试从,注册中心拿到provider元数据
             // test get nacos instances and call rest template...
             List<ServiceInstance> serviceInstanceList = discoveryClient.getInstances("helloService");
             System.out.println("===>  get instances: " + JSON.toJSONString(serviceInstanceList));
@@ -76,6 +79,19 @@ public class SpringcloudConsumerApplication {
                 ResponseEntity<String> result = restTemplate.getForEntity(url, String.class, 1);
                 System.out.println("===> call instance: " + JSON.toJSONString(result));
             }
+
+            // 随机访问
+            List<String> urls = serviceInstanceList.stream()
+                    .map(instance -> instance.getUri() + "/api/user/list?name=ipman")
+                    .toList();
+            for (int i = 0; i < 10; i++) {
+                int random = ThreadLocalRandom.current().nextInt(urls.size());
+                RestTemplate restTemplate = new RestTemplate();
+                String url1 = urls.get(random);
+                String res1 = restTemplate.getForObject(url1, String.class);
+                System.out.println("==> random.url to : " + url1 + " , res: " + res1);
+            }
+
 
         };
     }
