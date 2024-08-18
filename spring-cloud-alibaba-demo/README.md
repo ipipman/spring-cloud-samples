@@ -230,6 +230,8 @@ spring:
 
 ### Ribbon 配合 Nacos 的简述
 
+<img src="https://ipman-1304583208.cos.ap-nanjing.myqcloud.com/rpcman/2024-08-18-113511.png" alt="image-20240818193423325" style="width:700px;" />
+
 Ribbon 是一个客户端负载均衡库，它允许你在多个实例之间进行负载均衡调用。而 Nacos 是一个易于构建服务发现和配置管理平台的中间件，它可以作为服务注册中心来使用。
 当你在 Spring Cloud 应用中集成 Nacos 时，通常会使用 spring-cloud-starter-alibaba-nacos-discovery 依赖，这个依赖已经包含了 Ribbon 的支持。这意味着你不需要单独添加 Ribbon 的依赖，因为 Nacos 的服务发现客户端已经默认集成了 Ribbon
 
@@ -242,4 +244,28 @@ Ribbon 是一个客户端负载均衡库，它允许你在多个实例之间进�
 </dependency>
 
 ```
+
+
+
+使用时,需要配置RestTemplate, 并配置@LoadBalanced
+
+```java
+// 在spring容器中，创建一个对象，类型RestTemplate；名称/ID是：restTemplate
+@Bean
+@LoadBalanced
+public RestTemplate restTemplate() {
+    RestTemplate restTemplate =  new RestTemplate();
+    return restTemplate;
+}
+
+// 测试Ribbon
+for (int i = 0; i < 10; i++) {
+    // helloService, 会被转换成nacos的服务地址
+    String res2 = this.restTemplate.getForObject(
+            "http://helloService/api/user/list?name=ipman", String.class);
+    System.out.println("==> ribbon.url res: " + res2);
+}
+```
+
+
 

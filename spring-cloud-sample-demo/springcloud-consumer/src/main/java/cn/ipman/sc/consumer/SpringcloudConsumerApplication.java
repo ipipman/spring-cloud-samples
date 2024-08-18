@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.web.client.RestTemplateAutoConfiguration;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.context.ApplicationContext;
@@ -21,7 +23,6 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.Collectors;
 
 @SpringBootApplication
 @EnableDiscoveryClient
@@ -42,8 +43,13 @@ public class SpringcloudConsumerApplication {
     ApplicationContext context;
 
 
+    // 服务发现,获取provider元数据
     @Autowired
     DiscoveryClient discoveryClient;
+
+    // RestTemplate, 用于测试Ribbon
+    @Autowired
+    RestTemplate restTemplate;
 
 
     @Bean
@@ -92,6 +98,14 @@ public class SpringcloudConsumerApplication {
                 System.out.println("==> random.url to : " + url1 + " , res: " + res1);
             }
 
+
+            // 测试Ribbon
+            for (int i = 0; i < 10; i++) {
+                // helloService, 会被转换成nacos的服务地址
+                String res2 = this.restTemplate.getForObject(
+                        "http://helloService/api/user/list?name=ipman", String.class);
+                System.out.println("==> ribbon.url res: " + res2);
+            }
 
         };
     }
