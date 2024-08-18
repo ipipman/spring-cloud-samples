@@ -1,4 +1,4 @@
-package cn.ipman.sc.ribbon;
+package cn.ipman.sc.ribbonconfig;
 
 import com.netflix.loadbalancer.IRule;
 import com.netflix.loadbalancer.RandomRule;

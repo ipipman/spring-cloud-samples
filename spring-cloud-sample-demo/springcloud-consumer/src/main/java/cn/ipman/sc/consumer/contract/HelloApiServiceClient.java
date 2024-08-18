@@ -1,7 +1,7 @@
-package cn.ipman.sc.contract;
+package cn.ipman.sc.consumer.contract;
 
 import cn.ipman.sc.api.service.HelloApiService;
-import cn.ipman.sc.request.FeignConfig;
+import cn.ipman.sc.consumer.request.FeignConfig;
 import org.springframework.cloud.openfeign.FeignClient;
 
 /**

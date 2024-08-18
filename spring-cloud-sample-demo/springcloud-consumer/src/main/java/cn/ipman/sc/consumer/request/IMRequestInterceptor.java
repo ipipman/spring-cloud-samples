@@ -1,8 +1,7 @@
-package cn.ipman.sc.request;
+package cn.ipman.sc.consumer.request;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
-import org.springframework.stereotype.Component;
 
 /**
  * Description for this class

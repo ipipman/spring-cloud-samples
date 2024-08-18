@@ -1,4 +1,4 @@
-package cn.ipman.sc.request;
+package cn.ipman.sc.consumer.request;
 
 import feign.RequestInterceptor;
 import org.springframework.context.annotation.Bean;

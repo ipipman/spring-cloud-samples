@@ -1,5 +1,6 @@
-package cn.ipman.sc.ribbon;
+package cn.ipman.sc.consumer.ribbon;
 
+import cn.ipman.sc.ribbonconfig.RibbonConfiguration;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.context.annotation.Configuration;
 
@@ -9,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  * @Author IpMan
  * @Date 2024/8/18 21:34
  */
-@Configuration
-@RibbonClient(name = "helloService", configuration = RibbonConfiguration.class)
+//@Configuration
+//@RibbonClient(name = "helloService", configuration = RibbonConfiguration.class)
 public class HelloApiRibbonConfiguration {
 }

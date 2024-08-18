@@ -378,3 +378,10 @@ Ribbon 是一个客户端负载均衡库，用于在微服务架构中选择合�
 
 #### 示例：自定义负载均衡策略
 
+```java
+# yaml配置的方式
+helloService:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+```
+
