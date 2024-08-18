@@ -1,4 +1,4 @@
-package cn.ipman.sc.consumer;
+package cn.ipman.sc.request;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
