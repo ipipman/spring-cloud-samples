@@ -18,7 +18,7 @@ Spring Cloud Alibaba 的优势在于它结合了 Spring Cloud 的灵活性和阿
 
 
 
-
+<br><br><br>
 
 
 
@@ -41,13 +41,15 @@ Spring Cloud Alibaba 是一套基于 Spring Cloud 的微服务开发工具包，
 - **Seata**：
   - **分布式事务**：提供高性能的微服务事务解决方案。
 
+<br>
+
 这些组件共同构成了 Spring Cloud Alibaba 的核心功能，使得开发者能够利用这些工具快速搭建和管理微服务架构。每个组件都有其特定的功能，可以单独使用也可以组合使用，以满足不同场景的需求。
 
 <img src="https://ipman-1304583208.cos.ap-nanjing.myqcloud.com/rpcman/2024-08-11-085640.png" alt="image-20240811165636694" style="width:600px;" />
 
 
 
-
+<br><br><br>
 
 
 
@@ -58,6 +60,8 @@ Spring Cloud Alibaba 是一套基于 Spring Cloud 的微服务开发工具包，
 
 
 Spring Cloud Alibaba 和 Spring Cloud 的版本管理和兼容性是一个重要的考虑因素，因为它们之间的版本兼容性直接影响到项目的稳定性和可维护性。下面是一些关于 Spring Cloud Alibaba 和 Spring Cloud 版本兼容性的关键点：
+
+<br>
 
 ### Spring Cloud Alibaba 版本管理
 
@@ -78,6 +82,8 @@ Spring Cloud Alibaba 和 Spring Cloud 的版本管理和兼容性是一个重要
 
 - **Spring Cloud Alibaba** 提供了一个 **BOM** 文件来管理所有相关组件的版本。
 - 在 Maven 项目中，可以通过引入 **spring-cloud-alibaba-dependencies** BOM 来自动管理版本，避免手动指定版本号。
+
+<br>
 
 #### 示例
 
@@ -119,7 +125,7 @@ Spring Cloud Alibaba 和 Spring Cloud 的版本管理和兼容性是一个重要
 
 
 
-
+<br><br><br>
 
 
 
@@ -132,6 +138,8 @@ Nacos 是一个开源的分布式服务发现与配置管理平台，由阿里�
 
 
 
+
+<br>
 
 ### Nacos 注册中心的核心功能包括：
 
@@ -160,6 +168,8 @@ Nacos 是一个开源的分布式服务发现与配置管理平台，由阿里�
    - 记录服务调用的日志和指标。
    - 支持对配置变更的审计追踪。
 
+<br>
+
 ### Nacos 注册中心的优势：
 
 - **易用性**：Nacos 提供了丰富的客户端 SDK 和 RESTful API，使得集成变得简单。
@@ -167,12 +177,16 @@ Nacos 是一个开源的分布式服务发现与配置管理平台，由阿里�
 - **扩展性**：可以根据需要轻松扩展 Nacos 集群的规模。
 - **社区活跃**：作为一个开源项目，Nacos 拥有一个活跃的社区，提供了大量的文档和支持。
 
+<br>
+
 ### 使用场景：
 
 - 微服务架构中的服务发现和配置管理。
 - 多环境下的配置同步和管理。
 - 动态服务发现和负载均衡。
 - 分布式系统的流量管理和故障恢复。
+
+<br>
 
 ### 如何开始使用 Nacos 注册中心：
 
@@ -244,9 +258,7 @@ spring:
 
 
 
-
-
-
+<br><br><br>
 
 
 
@@ -255,7 +267,8 @@ spring:
 <img src="https://ipman-1304583208.cos.ap-nanjing.myqcloud.com/rpcman/2024-08-18-113511.png" alt="image-20240818193423325" style="width:700px;" />
 
 Ribbon 是一个客户端负载均衡库，它允许你在多个实例之间进行负载均衡调用。而 Nacos 是一个易于构建服务发现和配置管理平台的中间件，它可以作为服务注册中心来使用。
-当你在 Spring Cloud 应用中集成 Nacos 时，通常会使用 spring-cloud-starter-alibaba-nacos-discovery 依赖，这个依赖已经包含了 Ribbon 的支持。这意味着你不需要单独添加 Ribbon 的依赖，因为 Nacos 的服务发现客户端已经默认集成了 Ribbon
+
+<br>当你在 Spring Cloud 应用中集成 Nacos 时，通常会使用 spring-cloud-starter-alibaba-nacos-discovery 依赖，这个依赖已经包含了 Ribbon 的支持。这意味着你不需要单独添加 Ribbon 的依赖，因为 Nacos 的服务发现客户端已经默认集成了 Ribbon
 
 ```java
 <!-- Maven 示例 -->
@@ -267,7 +280,7 @@ Ribbon 是一个客户端负载均衡库，它允许你在多个实例之间进�
 
 ```
 
-
+<br>
 
 使用时,需要配置RestTemplate, 并配置@LoadBalanced
 
