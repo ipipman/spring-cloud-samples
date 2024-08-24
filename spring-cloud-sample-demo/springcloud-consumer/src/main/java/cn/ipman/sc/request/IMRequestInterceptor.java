@@ -1,4 +1,4 @@
-package cn.ipman.sc.consumer.request;
+package cn.ipman.sc.request;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;

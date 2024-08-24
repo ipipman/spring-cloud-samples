@@ -1,4 +1,4 @@
-package cn.ipman.sc.consumer.request;
+package cn.ipman.sc.consumer;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
@@ -10,7 +10,6 @@ import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 /**

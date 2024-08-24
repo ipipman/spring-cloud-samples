@@ -9,6 +9,10 @@ spring:
 #          username: nacos
 #          password: nacos
 
+#    loadbalancer:
+#        nacos:
+#            enabled: true
+
 
 server:
   port: 9100

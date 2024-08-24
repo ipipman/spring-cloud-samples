@@ -1,8 +1,8 @@
 package cn.ipman.sc.consumer;
 
 import cn.ipman.sc.api.model.User;
-import cn.ipman.sc.consumer.contract.HelloApiServiceClient;
-import cn.ipman.sc.consumer.contract.UserApiServiceClient;
+import cn.ipman.sc.contract.HelloApiServiceClient;
+import cn.ipman.sc.contract.UserApiServiceClient;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationRunner;
@@ -25,7 +25,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients(basePackages = "cn.ipman.sc.consumer")
+@EnableFeignClients(basePackages = "cn.ipman.sc")
 public class SpringcloudConsumerApplication {
 
     public static void main(String[] args) {

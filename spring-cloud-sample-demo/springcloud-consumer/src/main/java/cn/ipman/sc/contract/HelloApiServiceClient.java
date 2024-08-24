@@ -1,7 +1,6 @@
-package cn.ipman.sc.consumer.contract;
+package cn.ipman.sc.contract;
 
 import cn.ipman.sc.api.service.HelloApiService;
-import cn.ipman.sc.consumer.request.FeignConfig;
 import org.springframework.cloud.openfeign.FeignClient;
 
 /**
@@ -10,7 +9,7 @@ import org.springframework.cloud.openfeign.FeignClient;
  * @Author IpMan
  * @Date 2024/8/10 20:36
  */
-@FeignClient(value = "helloService", contextId = "hello", configuration = FeignConfig.class)
+@FeignClient(value = "helloService", contextId = "hello")
 public interface HelloApiServiceClient extends HelloApiService {
 
 }

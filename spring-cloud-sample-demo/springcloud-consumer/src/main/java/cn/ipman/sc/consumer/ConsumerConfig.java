@@ -1,5 +1,6 @@
-package cn.ipman.sc.consumer.request;
+package cn.ipman.sc.consumer;
 
+import cn.ipman.sc.request.IMRequestInterceptor;
 import feign.RequestInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * @Date 2024/8/18 20:32
  */
 @Configuration
-public class FeignConfig {
+public class ConsumerConfig {
 
     @Bean
     public RequestInterceptor requestInterceptor() {
