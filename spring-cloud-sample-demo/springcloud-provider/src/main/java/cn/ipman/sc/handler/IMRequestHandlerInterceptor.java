@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
  * @Author IpMan
  * @Date 2024/8/18 20:20
  */
+@Component
 public class IMRequestHandlerInterceptor implements HandlerInterceptor {
 
     @Override
