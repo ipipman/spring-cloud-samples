@@ -13,6 +13,6 @@ import java.util.Map;
  */
 public interface BaseService<T> {
 
-    BaseResponse<T> service(BaseRequest<T> request, Map<String, Object> params);
+    BaseResponse<T> service(BaseRequest<T> request);
 
 }
