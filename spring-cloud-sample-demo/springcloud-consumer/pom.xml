@@ -66,13 +66,6 @@
             <version>1.2.83</version>
         </dependency>
 
-        <!-- 添加 Ribbon 的具体依赖 -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
-            <version>2.2.1.RELEASE</version>
-        </dependency>
-
     </dependencies>
 
     <dependencyManagement>

@@ -41,7 +41,6 @@ public class SpringcloudConsumerApplication {
     @Autowired
     ApplicationContext context;
 
-
     // 服务发现,获取provider元数据
     @Autowired
     DiscoveryClient discoveryClient;

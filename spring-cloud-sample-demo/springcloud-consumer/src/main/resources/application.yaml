@@ -10,18 +10,6 @@ spring:
 #          password: nacos
 
 
-    loadbalancer:
-      ribbon:
-        enabled: true
-#ribbon:
-#  eager-load:
-#    enabled: true
-#    clients: helloService
-
 server:
   port: 9100
 
-## 服务名称
-#helloService:
-#  ribbon:
-#    NFLoadBalancerRuleClassName: cn.ipman.sc.consumer.ribbon.HelloApiCustomRule
